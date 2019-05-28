@@ -16,6 +16,14 @@ PRODUCT_COPY_FILES += \
     device/samsung/kyleproxx/rootdir/init.log.rc:root/init.log.rc \
     device/samsung/kyleproxx/rootdir/ueventd.hawaii_ss_kyleprods.rc:root/ueventd.hawaii_ss_kyleprods.rc
 
+# HIDL
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/manifest.xml:system/vendor/manifest.xml
+
+# Build with specific settings for kyleproxx GO version
+$(call inherit-product, $(LOCAL_PATH)/go_kyleproxx.mk)
+
+
 # Google's Software Decoder.
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
@@ -98,13 +106,58 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.nocheckin=1
 
-# Wi-Fi
+
+# Wifi
 PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service \
+    android.hardware.wifi.supplicant@1.0 \
     macloader \
-    hostapd \
+    wificond \
     libnetcmdiface \
+    hostapd \
     wpa_supplicant \
     wpa_supplicant.conf
+
+# Legacy GPS
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl \
+    gps.hawaii
+
+
+# Packages
+PRODUCT_PACKAGES += \
+    AdvancedDisplay \
+    vendor.lineage.livedisplay@2.0-service.samsung \
+    android.hardware.graphics.allocator@2.0-impl-hawaii \
+    android.hardware.graphics.mapper@2.0-impl-hawaii \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio.effect@2.0-impl \
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.light@2.0-impl \
+    android.hardware.light@2.0-service \
+    android.hardware.bluetooth@1.0-impl \
+    android.hardware.vibrator@1.0-impl \
+    gCam \
+    android.hardware.camera.provider@2.4-impl-legacy \
+    camera.device@1.0-impl-legacy \
+    android.hardware.sensors@1.0-impl \
+    android.hardware.gnss@1.0-impl \
+    libsuspend-shim \
+    libC
+
+# USB
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-service.basic
+
+# SamsungPowerHAL
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-service.hawaii
+
+# Usb
+PRODUCT_PACKAGES += \
+	android.hardware.usb@1.0-impl \
+	android.hardware.usb@1.0-service
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \

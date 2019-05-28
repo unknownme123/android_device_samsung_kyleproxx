@@ -19,11 +19,13 @@
   - WIFI/Bluetooth/FM-Radio: BCM4330
 
 ### Notice:
-  - Apply patch *PATCH_CM-14.1.diff* to root directory of LOS-14.1 source code before build
+  - Apply patch *PATCH_CM-14.1.diff* to root directory of LOS-14.1 source code before build (copy patch file to root directory of your rom and run "patch -p1 < PATCH_CM-14.1.diff" command.)
+  - Clone arm-linux-androideabi-4.7 toolchain before build
 
 ### Other resource:
   - Kernel source: https://github.com/ishantvivek/android_kernel_samsung_kyleproxx
   - Vendor blobs: https://github.com/ishantvivek/android_vendor_samsung_kyleproxx
+  - GCC 4.7 Toolchain: https://github.com/ciyanogen/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.7/
 
 ### More Information:
 ```sh
